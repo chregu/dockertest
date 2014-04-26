@@ -9,15 +9,20 @@ This is just a test for me for docker. It uses
 
 It starts two docker containers, one with nginx, the other with [hhvm](http://hhvm.com/)
 
+If you have linux, you can ditch the whole vagrant part. "sudo fig up" should be enough for you, if you have installed Docker (on debian/ubtuntu "apt-get install docker.io")
+
 
 # Start up
 
 ## Ansible
 
-you need ansible locally, eg with
+you need ansible locally, eg on OS X with homebrew
 ````
 brew install ansible
 ````
+
+(AFAIK ansible is not available on linux, so you're a little bit out of luck here. One solution would be to run ansible within vagrant)
+
 
 ## start vagrant and dockers
 
