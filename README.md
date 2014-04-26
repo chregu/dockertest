@@ -70,3 +70,14 @@ sudo fig run --rm app /bin/sh -c "cd /var/www && composer install"
 ````
 
 And call http://172.84.98.44:82/index.php/hello/foo
+
+# coreos
+
+I played a little bit with [CoreOS](https://coreos.com/), but not much, you can find the service files needed in coreos/, move them somewhere into your system and do.
+
+````
+sudo systemctl enable ~/coreos/app.1.service
+sudo systemctl enable ~/coreos/front.1.service
+sudo systemctl start front.1.service
+````
+and it should run (tested with [this CoreOS Vagrant Box](https://github.com/coreos/coreos-vagrant))

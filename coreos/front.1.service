@@ -1,0 +1,16 @@
+[Unit]
+Description=Run front_1
+After=app.1.service
+Requires=app.1.service
+
+[Service]
+Restart=always
+RestartSec=10s
+ExecStartPre=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStart=/usr/bin/docker run --rm --name front_1 -v /home/core/share/dockertest/sources/:/var/www/ --link app_1:app_1  -p 82:80 chregu/nginx /sbin/my_init --enable-insecure-key
+ExecStartPost=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStop=/usr/bin/docker kill front_1
+ExecStopPost=/usr/bin/docker ps -a -q | xargs docker rm
+
+[Install]
+WantedBy=local.target

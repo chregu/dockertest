@@ -41,5 +41,4 @@ ADD info.php /var/www/info.php
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
-
+EXPOSE 9000

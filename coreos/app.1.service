@@ -1,0 +1,16 @@
+[Unit]
+Description=Run app_1
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+RestartSec=10s
+ExecStartPre=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStart=/usr/bin/docker run --expose 9000 --rm --name app_1 -v /home/core/share/dockertest/sources/:/var/www/    chregu/hhvm
+ExecStartPost=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStop=/usr/bin/docker kill app_1
+ExecStopPost=/usr/bin/docker ps -a -q | xargs docker rm
+
+[Install]
+WantedBy=local.target
