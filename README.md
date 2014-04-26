@@ -38,8 +38,8 @@ to check if it works (should output the HHVM version number and more stuff);
 
 ````
 sudo bash docker-build.sh
-sudo fig up
-sudo fig down
+sudo fig up -d
+sudo fig stop
 sudo bash docker-commit-and-push.sh
 ````
 
