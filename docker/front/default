@@ -2,7 +2,7 @@
 server {
     listen 80;
 
-    root /var/www;
+    root /var/www/web;
     index index.html index.htm;
 
     # Make site accessible from http://localhost/
@@ -17,12 +17,12 @@ server {
     # redirect server error pages to the static page /50x.html
     error_page 500 502 503 504 /50x.html;
     location = /50x.html {
-           root /var/www;
+           root /var/www/web;
     }
 
 
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-    location ~ \.php$ {
+    location ~ \.php {
            fastcgi_split_path_info ^(.+\.php)(/.+)$;
 
            fastcgi_pass ${APP_1_PORT_9000_TCP_ADDR}:${APP_1_PORT_9000_TCP_PORT};
