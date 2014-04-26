@@ -52,7 +52,7 @@ sudo bash docker-ssh.sh chregu/hhvm
 # start the silex example
 
 ````
-sudo fig run app /bin/sh -c "cd /var/www && composer install"
+sudo fig run --rm app /bin/sh -c "cd /var/www && composer install"
 ````
 
 And call http://172.84.98.44:82/index.php/hello/foo
