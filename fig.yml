@@ -1,0 +1,14 @@
+front:
+  image: chregu/nginx
+  command: /sbin/my_init --enable-insecure-key
+  ports:
+    - "82:80"
+  links:
+    - app
+app:
+  image: chregu/hhvm
+  command: /sbin/my_init --enable-insecure-key
+  expose:
+    - 9000
+  volumes:
+    - sources/:/var/www
