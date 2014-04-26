@@ -1,5 +1,14 @@
 # Start up
 
+## Ansible
+
+you need ansible, eg with
+````
+brew install ansible
+````
+
+## start vagrant and dockers
+
 ````
 vagrant up
 vagrant ssh
