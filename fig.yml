@@ -5,6 +5,8 @@ front:
     - "82:80"
   links:
     - app
+  volumes:
+    - ./sources/:/var/www/
 app:
   image: chregu/hhvm
   command: /sbin/my_init --enable-insecure-key

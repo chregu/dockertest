@@ -43,3 +43,9 @@ sudo fig stop
 sudo bash docker-commit-and-push.sh
 ````
 
+# ssh into running containers
+
+````
+sudo bash docker-ssh.sh chregu/hhvm
+````
+
