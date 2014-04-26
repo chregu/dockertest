@@ -1,0 +1,21 @@
+- hosts: default
+
+  tasks:
+    - name: install packages
+      apt: pkg={{ item }} state=latest
+      sudo: yes
+      with_items:
+        - docker.io
+
+    - name: symlink docker.io to docker
+      file: src=/usr/bin/docker.io dest=/usr/local/bin/docker owner=root group=root state=link
+      sudo: yes
+
+    - name: get fig
+      shell: curl -q -L https://github.com/orchardup/fig/releases/download/0.3.2/linux > /usr/local/bin/fig creates=/usr/local/bin/fig
+      sudo: yes
+
+    - name: make fig executable
+      file: path=/usr/local/bin/fig owner=root group=root mode=0755
+      sudo: yes
+
