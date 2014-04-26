@@ -43,6 +43,15 @@ sudo fig stop
 sudo bash docker-commit-and-push.sh
 ````
 
+# update images from index.docker.io
+
+If the images on index.docker.io where updated and you don't build them yourself, you have to pull them before running fig up
+
+````
+sudo docker pull chregu/nginx
+sudo docker pull chregu/hhvm
+````
+
 # ssh into running containers
 
 ````
