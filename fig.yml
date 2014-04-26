@@ -11,4 +11,4 @@ app:
   expose:
     - 9000
   volumes:
-    - sources/:/var/www
+    - ./sources/:/var/www/
