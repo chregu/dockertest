@@ -81,3 +81,14 @@ sudo systemctl enable ~/coreos/front.1.service
 sudo systemctl start front.1.service
 ````
 and it should run (tested with [this CoreOS Vagrant Box](https://github.com/coreos/coreos-vagrant))
+
+## coreos and fleetctl
+
+````
+fleetctl enable coreos/full.1.service
+fleetctl start full.1.service
+fleetctl list-units
+fleetctl enable coreos/full.2.service
+fleetctl start full.2.service
+fleetctl list-units
+````
