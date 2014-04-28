@@ -1,0 +1,19 @@
+[Unit]
+Description=Run full_2
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+RestartSec=10s
+ExecStartPre=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStart=/usr/bin/docker run -p=80:80 --name full_2 --rm    chregu/hhvmnginx
+ExecStartPost=/usr/bin/docker ps -a -q | xargs docker rm
+ExecStop=/usr/bin/docker kill full_2
+ExecStopPost=/usr/bin/docker ps -a -q | xargs docker rm
+
+[Install]
+WantedBy=local.target
+
+[X-Fleet]
+X-Conflicts=full.*.service
