@@ -1,8 +1,13 @@
 /usr/local/bin/docker build -t chregu/nginx docker/front
 /usr/local/bin/docker build -t chregu/hhvm docker/app
+/usr/local/bin/docker build -t chregu/hhvm docker/app
+/usr/local/bin/docker build -t chregu/nginxhhvm  .
+
 
 /usr/local/bin/docker run -d -i -t --name=app --link=db:db -p=9000:9000 -v=/tmp/:/var/www chregu/hhvm
 /usr/local/bin/docker run -d -i -t --name=front --link=app:app -p=81:80 -v=/tmp/:/var/www chregu/nginx /sbin/my_init --enable-insecure-key
+/usr/local/bin/docker run -d -p=80:80 -i -t chregu/nginxhhvm /sbin/my_init  --enable-insecure-key
+
 
 # stop all running containers
 docker stop $(docker ps -q)
