@@ -26,7 +26,7 @@ RUN mkdir /etc/service/nginx
 ADD nginx.runit /etc/service/nginx/run
 RUN chmod a+x /etc/service/nginx/run
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 
 

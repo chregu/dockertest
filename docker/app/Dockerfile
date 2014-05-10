@@ -39,6 +39,6 @@ RUN chmod a+x /etc/service/hhvm/run
 
 ADD info.php /var/www/info.php
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 EXPOSE 9000

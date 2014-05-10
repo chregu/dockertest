@@ -1,0 +1,36 @@
+server {
+    listen 80;
+
+    root /var/www/web;
+    index index.html index.htm;
+
+    # Make site accessible from http://localhost/
+    server_name localhost;
+
+
+    location / {
+        # try to serve file directly, fallback to rewrite
+        try_files $uri @rewriteapp;
+    }
+
+    location @rewriteapp {
+        # rewrite all to app.php
+        rewrite ^(.*)$ /app.php/$1 last;
+    }
+
+    location ~  ^/.*\.php(/|$) {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  app.php;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        #fastcgi_param  SCRIPT_FILENAME /srv/www/vhosts/api/current/web$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    location ~ /\.ht {
+           deny all;
+    }
+}
+
